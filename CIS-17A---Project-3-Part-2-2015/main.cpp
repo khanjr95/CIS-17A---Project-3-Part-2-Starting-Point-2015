@@ -5,6 +5,7 @@ void DisplayMenu(shared_ptr<Folder> currentFolder, shared_ptr<Folder> parent);
 void AddFileMenu(shared_ptr<Folder> currentFolder);
 void AddFolderMenu(shared_ptr<Folder> currentFolder);
 shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder);
+void search(shared_ptr<Folder> currentFolder);
 
 int main()
 {
@@ -90,4 +91,21 @@ void AddFolderMenu(shared_ptr<Folder> currentFolder)
 
 	auto newFolder = make_shared<Folder>(name);
 	currentFolder->AddFolder(newFolder);
+}
+void search(shared_ptr<Folder> currentFolder)
+{
+	system("cls");
+	//1. promt user for file name
+	cout << "Enter file name you wish to search for:";
+	string input;
+	cin >> input;
+	cin.ignore();
+
+	auto file= currentFolder->Search(input);
+
+
+	//2. search the current folder for file
+	//3. call search method on current folder
+	//4. 
+	//5. 
 }
