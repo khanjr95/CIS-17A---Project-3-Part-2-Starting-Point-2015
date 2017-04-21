@@ -27,7 +27,7 @@ int main()
 			cout << endl << "Now in folder " << newcurrent->getName() << "!";
 			break;
 		}
-		case 5: //IMPLEMENT THIS
+		case 5: search(currentFolder); break;
 		case 4: AddFolderMenu(currentFolder); break;
 		case 6: {
 			if (parentFolder != nullptr) {
@@ -102,7 +102,7 @@ void search(shared_ptr<Folder> currentFolder)
 	cin.ignore();
 
 	auto file= currentFolder->Search(input);
-
+	system("pause");
 
 	//2. search the current folder for file
 	//3. call search method on current folder

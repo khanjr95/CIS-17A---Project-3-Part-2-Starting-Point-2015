@@ -1,4 +1,5 @@
 #include "Folder.h"
+#include <iostream>
 
 Folder::Folder(std::string name) : _name(name)
 {
@@ -54,6 +55,29 @@ std::shared_ptr<Folder> Folder::FindFolder(std::string name)
 
 std::shared_ptr<File> Folder::Search(std::string name)
 {
+	{
+		for (auto file : _files)
+		{
+			if (file->getName() == name)
+			{
+				std::cout << "File Found: " << name << "\n";
+				std::cout<< "Located in Folder: " << getName() << "\n";
+				FindFolder(getName());
+				return file;
+			}
+		}
+
+		for (auto folder : _folders)
+		{
+			auto file = folder->Search(name);
+			if (file != nullptr)
+			{
+				return file;
+			}
+		}
+		return nullptr;
+	}
+
 	//loop/iterate this folder's files
 	/*for (auto file : _files)
 	{
@@ -63,17 +87,17 @@ std::shared_ptr<File> Folder::Search(std::string name)
 		}
 	}*/
 	//if you find a file with the passed in name, return it
-	return 0;
+
 
 	//loop/iterate this folder's folders
-	for (auto folder : _folders)
-	{
-		auto file = folder->Search(name);
-		if (file != nullptr)
-		{
-			return file;
-		}
-	}
+	//for (auto folder : _folders)
+	//{
+	//	auto file = folder->Search(name);
+	//	if (file != nullptr)
+	//	{
+	//		return file;
+	//	}
+	//}
 	//Search(each folder in the loop)
 	//Otherwise return nullptr
 }
