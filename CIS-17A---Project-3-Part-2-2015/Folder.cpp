@@ -65,6 +65,7 @@ std::shared_ptr<File> Folder::Search(std::string name)
 				FindFolder(getName());
 				return file;
 			}
+			
 		}
 
 		for (auto folder : _folders)
@@ -73,6 +74,10 @@ std::shared_ptr<File> Folder::Search(std::string name)
 			if (file != nullptr)
 			{
 				return file;
+			}
+			else
+			{
+				std::cout << "File not found or does not exist! \n";
 			}
 		}
 		return nullptr;
